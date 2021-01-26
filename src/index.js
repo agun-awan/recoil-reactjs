@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter as Links } from 'react-router-dom'
+import {RecoilRoot} from "recoil";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <RecoilRoot>
+          <Suspense fallback={<div>Loading please wait . . .</div>}>
+              <Links>
+                  <App />
+              </Links>
+          </Suspense>
+      </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );
